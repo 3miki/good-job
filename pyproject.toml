@@ -1,0 +1,20 @@
+[project]
+name = "good-job"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "3miki", email = "90838632+3miki@users.noreply.github.com"},
+]
+dependencies = [
+    "pypdf>=5.1.0",
+    "streamlit>=1.40.1",
+    "google-generativeai>=0.8.3",
+    "python-dotenv>=1.0.1",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
