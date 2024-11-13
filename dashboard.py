@@ -57,8 +57,7 @@ if file_exists:
 
         else:
             prompt = """
-            Can you analyse my CV and this job description and give me a percentage how my skill match with the role? 
-            Show the matching percentage in number at the beggining such as "Matching result: xx%", and explain why you reach the answer in 2-3 sentences. You should encourage me even if my skill is not adequate for the role, suggesting skill I might want to develop. My CV is
+            Please analyse my CV in relation to this job description and provide a matching percentage score at the beginning (e.g., “Matching result: xx%”). Then, briefly explain (in 3-4 sentences) how you arrived at this percentage, focusing on key matching skills, qualifications, and experiences. Regardless of the matching result, encourage me to apply by explaining that candidates often apply successfully with less than perfect alignment and suggest any relevant transferable skills that could strengthen my application. Finally, recommend a few specific skills I might consider developing to increase my suitability for similar roles. My CV is
             """ + cv_content + "The job description is " + job_description
 
             # call the model to generate the answer
