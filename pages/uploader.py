@@ -5,34 +5,45 @@
 import streamlit as st
 import os
 
-st.markdown("# Uploader 🎈")
-st.sidebar.markdown("# Uploader 🎈")
+st.markdown("# Uploader 📤")
+st.sidebar.markdown("# Uploader 📤")
 
-# st.text_input("Your name", key="name")
-# st.session_state.name
+# upload by pdf file
+st.write("Upload your CV (PDF or text) to get started!")
+st.write("Please note that this app uses Gemini model so consider not to upload your personal data to keep your privacy. Check Google’s AI and privacy policy for more information. You can also enter texts from your CV.")
+uploaded_file = st.file_uploader("Choose a file (PDF only)", type=["pdf"])
 
-uploaded_file = st.file_uploader("Choose a file", type=["txt", "pdf"])
+# check if pdf file has been uploaded
+if uploaded_file:
+    file_name = "CV_file.pdf"
+    dir_file_name = "uploads/" + file_name
 
-# check if file has been uploaded
-if uploaded_file is not None:
-    # st.write("Filename:", uploaded_file.name)
-    # st.write("File size:", uploaded_file.size, "bytes")
-    # st.write("File type:", uploaded_file.type)
-
-    # if it's pdf
-    if uploaded_file.type in ["pdf"]:
-        file_name = "uploads/file-1.pdf"
-        st.image(uploaded_file, caption="Uploaded PDF", use_column_width=True)
-
-    # # if it's text file
-    # elif uploaded_file.type == "text/plain":
-    #     file_name = "uploads/file-1.txt"
-    #     content = uploaded_file.read().decode("utf-8")
-    #     st.text(content)
-
-    if st.button("Save File"):
-        file_path = os.path.join(os.getcwd(), "uploads/file-1.pdf")
-        # file_path = os.path.join(os.getcwd(), file_name)
+    if st.button("Save File") and dir_file_name:
+        file_path = os.path.join(os.getcwd(), dir_file_name)
         with open(file_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
-        st.success("File saved successfully as 'file-1'!")
+        st.success("File saved successfully as " + file_name + "!")
+        
+        # delete text file if pdf file is uploaded
+        text_file_path = os.path.join(os.getcwd(), "uploads/Text_file.txt")
+        if os.path.exists(text_file_path):
+            os.remove(text_file_path)
+            st.warning("Text file deleted as PDF file is uploaded.")
+
+# upload by text
+uploaded_text = st.text_area("Or add your CV texts here:", height=300)
+file_name = "Text_file.txt"
+dir_file_name = "uploads/" + file_name
+
+if st.button("Save Text"):
+    if uploaded_text:
+        file_path = os.path.join(os.getcwd(), dir_file_name)
+        with open(file_path, "wb") as f:
+            f.write(uploaded_text.encode("utf-8"))
+        st.success("File saved successfully as " + file_name + "!")
+        
+        # delete pdf file if text file is uploaded
+        pdf_file_path = os.path.join(os.getcwd(), "uploads/CV_file.pdf")
+        if os.path.exists(pdf_file_path):
+            os.remove(pdf_file_path)
+            st.warning("PDF file deleted as text file is uploaded.")
