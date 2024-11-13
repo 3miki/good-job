@@ -1,7 +1,7 @@
 # good-job
 
 ### Overview
-- add
+This app analyses job seeker skills against job descriptions, providing a match percentage and AI-driven encouragement to boost confidence. You can upload a CV file(PDF) or text using an uploader, then add a job description on to a dashboard page. Now, you will get a response with analysis!
 
 
 ### Technology
