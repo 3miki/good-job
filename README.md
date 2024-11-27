@@ -13,20 +13,19 @@ The main framework and tools used in this project are followings:
 ### How to set up
 
 Step 1: Install dependancies
-1. Download Package and Dependency Manager [(PDM)](https://pdm-project.org/en/latest/) package to organise package and versions.
+1. Download Package and Dependency Manager [(uv)](https://docs.astral.sh/uv/getting-started/installation/) package to organise package and versions.
 
-The commands below are some of options you can use for installation in terminal. (Check more options on PDM website)
+The commands below are some of options you can use for installation in terminal. (Check more options on UV website)
 
-`brew install pdm` or 
-`pip install --user pdm`
+mac: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
-2. Run this command to install all dependancies in terminal.
+1. Run this command to install all dependancies in terminal.
 
-`pdm install`
+`uv sync`
 
 3. [Option] How to add packages or dependancies (add one by one)
 
-`pdm add <package name>`
+`uv add <package name>`
 
 
 Step 2: Set environment variables
@@ -43,4 +42,9 @@ Remove 'example' from the file name.
 Step 3: Run program files
 To run the python from terminal using PDM and streamlit, use the following command:
 
-`pdm run streamlit run dashboard.py`
+`uv run streamlit run dashboard.py`
+
+
+## TO DO
+- Deloy a webpage and allow user to enter their API key.
+- Use session state to store PDF data for the session.
